@@ -10,7 +10,7 @@ app.use(express.json())
 const con = mysql.createConnection(process.env.DATABASE_URL)
 const BACKEND_URL = "https://uvawater.up.railway.app/api"
   
-con.connect(function(err) {
+con.connect(function(err)
     if (err) throw err
     console.log("Connected!")
 })
@@ -46,6 +46,6 @@ app.post(BACKEND_URL + "/create", (req, res) => {
     })
 })
 
-app.listen("3000", () => {
+app.listen(process.env.PORT || "3000", () => {
     console.log("Listening on port 3000")
 })
