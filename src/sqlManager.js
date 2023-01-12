@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json())
 
 const con = mysql.createConnection(process.env.DATABASE_URL)
-const BACKEND_URL = "https://uvawater.up.railway.app/api"
+const BACKEND_URL = ""
   
 con.connect(function(err){
     if (err) throw err
@@ -16,7 +16,6 @@ con.connect(function(err){
 })
 
 app.post(BACKEND_URL + "/reviews", (req, res) => {
-    res.send("Reviews endpoint")
     const building = req.body.building
     const sql = "SELECT * FROM reviews WHERE buildingName = ?"
     con.query(sql, [building], (err, result) => {
