@@ -25,12 +25,6 @@ app.post(BACKEND_URL + "/reviews", (req, res) => {
 })
 
 app.post(BACKEND_URL + "/create", (req, res) => {
-    let sql = "CREATE TABLE IF NOT EXISTS reviews (buildingName VARCHAR(255), fountainName VARCHAR(255), flowRating INT, tempRating INT)"
-    con.query(sql, (err, result) => {
-        if (err) throw err
-        console.log("Table created");
-    })
-
     const building = req.body.building
     const fountain = req.body.fountain
     const temp = req.body.temp
