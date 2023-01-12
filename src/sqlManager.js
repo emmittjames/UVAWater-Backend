@@ -46,6 +46,6 @@ app.post(BACKEND_URL + "/create", (req, res) => {
     })
 })
 
-app.listen(process.env.MYSQL_PORT || "3000", () => {
-    console.log("Listening on port " + process.env.MYSQL_PORT)
+app.listen("3000", () => {
+    console.log("Listening on port 3000")
 })
