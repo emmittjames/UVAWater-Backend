@@ -44,7 +44,7 @@ app.post("/api/create", (req, res) => {
 })
 
 app.post("/email", (req, res) => {
-    const message = req.body.message
+    const message = req.body.message + "mmm"
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
