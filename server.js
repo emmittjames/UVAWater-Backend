@@ -23,7 +23,7 @@ app.listen(PORT, () => {
 app.post("/api/reviews", (req, res) => {
     const building = req.body.building
     const sql = "SELECT * FROM reviews WHERE buildingName = ?"
-    con.query(sql, [building], (err, res) => {
+    con.query(sql, [building], (err, result) => {
         if(err) throw err
         res.send(result)
     })
@@ -36,8 +36,9 @@ app.post("/api/create", (req, res) => {
     const flow = req.body.flow
 
     sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (?,?,?,?)"
-    con.query(sql, [building, fountain, temp, flow], (err, res) => {
+    con.query(sql, [building, fountain, temp, flow], (err, result) => {
         if(err) throw err
+        console.log(result)
         res.send("Insterted rating")
     })
 })
