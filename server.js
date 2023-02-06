@@ -23,7 +23,7 @@ app.listen(PORT, () => {
 app.post("/api/reviews", (req, res) => {
     const building = req.body.building
     const sql = "SELECT * FROM reviews WHERE buildingName = ?"
-    con.query(sql, [building], (err, result) => {
+    con.query(sql, [building], (err, res) => {
         if(err) throw err
         res.send(result)
     })
@@ -40,11 +40,6 @@ app.post("/api/create", (req, res) => {
         if(err) throw err
         res.send("Insterted rating")
     })
-    /*let lengthQuery = "SELECT COUNT(*) FROM reviews"
-    con.query(lengthQuery, (err,res) => {
-        if(err) throw err
-        res.send(result)
-    })*/
 })
 
 app.post("/email", (req, res) => {
