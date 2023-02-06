@@ -43,7 +43,7 @@ app.post("/api/create", (req, res) => {
 })
 
 app.post("/api/totalreviews", (req, res) => {
-    const sql = "SELECT COUNT(tempRating) FROM reviews"
+    const sql = "SELECT COUNT(*) FROM reviews"
     con.query(sql, (err, result) => {
         if(err) throw err
         res.send(result)
