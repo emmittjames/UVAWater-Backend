@@ -87,20 +87,6 @@ app.post("/email", (req, res) => {
     res.send("Email sent: " + message);
 });
 
-let timer = null
-
-app.post("/pialarm", (req, res) => {
-    if(timer) {
-        clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-        console.log("PI alarm triggered");
-        sendEmail("PI alarm triggered ahhhhhhhhhh");
-    // }, 60000)
-    }, 600)
-    res.send("Alarm set");
-})
-
 async function checkForReviewsTable() {
     try {
         const sql = `
@@ -118,3 +104,16 @@ async function checkForReviewsTable() {
         console.error("Error creating reviews table:", error);
     }
 }
+
+let timer = null
+
+app.post("/pialarm", (req, res) => {
+    if(timer) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+        console.log("PI alarm triggered, sending email");
+        sendEmail("PI alarm triggered, something is probably wrong");
+    }, 60000)
+    res.send("Alarm set");
+})
