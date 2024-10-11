@@ -98,6 +98,7 @@ app.post("/pialarm", (req, res) => {
         sendEmail("PI alarm triggered ahhhhhhhhhh");
     // }, 60000)
     }, 600)
+    res.send("Alarm set");
 })
 
 async function checkForReviewsTable() {
