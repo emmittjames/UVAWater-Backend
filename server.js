@@ -110,9 +110,9 @@ let timer = null
 app.post("/pialarm", (req, res) => {
     console.log("pi alarm hit");
     if(timer) {
+        console.log("Alarm cleared");
         clearTimeout(timer);
     }
-    console.log("Alarm cleared");
     timer = setTimeout(() => {
         console.log("PI alarm triggered, sending email");
         sendEmail("PI alarm triggered, something is probably wrong");
@@ -126,13 +126,13 @@ let timer2 = null
 app.post("/pialarmtest", (req, res) => {
     console.log("pialarmtest hit");
     if(timer2) {
+        console.log("Alarm2 cleared");
         clearTimeout(timer2);
     }
-    console.log("Alarm2 cleared");
     timer2 = setTimeout(() => {
         console.log("PI alarm 2 triggered, sending email");
         sendEmail("PI alarm 2 triggered, something is probably wrong");
-    }, 60000)
+    }, 6000)
     res.send("Alarm2 set");
     console.log("Alarm2 set");
 })
