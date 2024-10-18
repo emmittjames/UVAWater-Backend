@@ -127,6 +127,7 @@ app.post("/pialarmtest", (req, res) => {
     console.log("pialarmtest hit");
     if(timer2) {
         console.log("Alarm2 cleared");
+        res.send("Old timer cleared")
         clearTimeout(timer2);
     }
     timer2 = setTimeout(() => {
