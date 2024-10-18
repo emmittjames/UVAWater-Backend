@@ -108,12 +108,15 @@ async function checkForReviewsTable() {
 let timer = null
 
 app.post("/pialarm", (req, res) => {
+    console.log("pi alarm hit");
     if(timer) {
         clearTimeout(timer);
     }
+    console.log("Alarm cleared");
     timer = setTimeout(() => {
         console.log("PI alarm triggered, sending email");
         sendEmail("PI alarm triggered, something is probably wrong");
-    }, 600000)
+    }, 600)
     res.send("Alarm set");
+    console.log("Alarm set");
 })
