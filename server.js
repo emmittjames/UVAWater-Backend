@@ -115,7 +115,7 @@ app.post("/pialarm", (req, res) => {
     }
     timer = setTimeout(() => {
         console.log("PI alarm triggered, sending email");
-        sendEmail("PI alarm triggered, something is probably wrong");
+        // sendEmail("PI alarm triggered, something is probably wrong");
     }, 60000)
     res.send("Alarm set");
     console.log("Alarm set");
