@@ -15,12 +15,22 @@ const pool = new Pool({
     },
 });
 
-pool.connect()
-    .then(() => {
-        console.log("Connected to PostgreSQL")
-        checkForReviewsTable();
-    })
-    .catch((err) => console.error("Error connecting to PostgreSQL", err));
+pool.on('error', (err) => {
+    console.error('Unexpected error on idle client', err);
+    process.exit(-1);
+});
+
+const connectToDatabase = async () => {
+    try {
+        await pool.connect();
+        console.log("Connected to PostgreSQL");
+        await checkForReviewsTable();
+    } catch (err) {
+        console.error("Error connecting to PostgreSQL", err);
+    }
+};
+
+connectToDatabase();
 
 const PORT = process.env.PORT || "3000";
 app.listen(PORT, () => {
